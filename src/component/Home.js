@@ -4,11 +4,11 @@ import Cardapi from './Cardapi';
 
 function Home() {
   return (
-    <div>
-      <Nav />
-      <Cardapi />
-    </div>
-  )
+    <>
+        <Nav />
+        <Cardapi />
+    </>
+);
 }
 
-export default Home
+export default Home;

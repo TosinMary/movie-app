@@ -1,32 +1,53 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
+
+function truncateText(text, maxLength) {
+    const words = text.split(' ');
+    if (words.length > maxLength) {
+        return words.slice(0, maxLength).join(' ') + '...';
+    } else {
+        return text;
+    }
+}
 
 function Card(movie) {
-    console.log(movie.info);
-    let img_path ="https://image.tmdb.org/t/p/w500";
-    
+    let img_path = 'https://image.tmdb.org/t/p/w500';
 
-  return (
-    <div className='bg-white w-full py-[3rem] px-4 '>
-      <div className='mx-auto max-w-[1120px] grid grid-cols-1 md:grid-cols-3 gap-8'>
-        <div className='w-full shadow-2xl flex flex-col px-2 my-2 hover:scale-100 duration-300'>
-          <div >
-          <img src={img_path+movie.info.poster_path} alt='' className='h-[400px] w-[400px]  '></img>
-          </div>
-      
-        <div className='pt-4'>
-        <h1 className='text-gray-400'>{movie.info.release_date} </h1>
-        <h2 className='font-bold text-[1rem] py-2'>{movie.info.title} </h2>
-        <h2 className='font-bold text-[1rem] py-2'>{movie.info.id} </h2>
-        <div className='flex py-2'>
-            <p className='mr-12 text-yellow-700'>{movie.info.vote_average} </p>
-            <p>{movie.info.popularity} </p>
-        </div>
-        <p className='text-gray-400 py-3 leading-8'>{movie.info.overview} </p>
-        </div>
-        </div>
-        </div>
-    </div>
-  )
+    return (
+        <>
+            <div data-testId='movie-card'  className='shadow-2xl flex flex-col my-2 hover:scale-100 duration-300 bg-white  py-[3rem] px-4 card-item'>
+                <Link to={`/Details/${movie.info.id}`}>
+                    <div className='p-4'>
+                        <img
+                            src={img_path + movie.info.poster_path}
+                            alt=''
+                            className='h-[400px] w-[400px]  '
+                            data-testId='movie-poster'
+                        ></img>
+                    </div>
+
+                    <div className='p-4'>
+                        <h1 className='text-gray-400' data-testid='movie-release-date'>
+                            Release date: {movie.info.release_date}
+                        </h1>
+                        <h2 className='font-bold text-[1rem] py-2' data-testId='movie-title'>
+                            {movie.info.title}
+                        </h2>
+
+                        <div className='flex py-2'>
+                            <p className='mr-12 text-yellow-700'>
+                                Vote average: {movie.info.vote_average}
+                            </p>
+                            <p>Popularity: {movie.info.popularity}% </p>
+                        </div>
+                        <p className='text-gray-400 py-3 leading-8 overview'>
+                            Overview: {truncateText(movie.info.overview, 30)}
+                        </p>
+                    </div>
+                </Link>
+            </div>
+        </>
+    );
 }
 
 export default Card

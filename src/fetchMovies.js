@@ -9,7 +9,10 @@ export default async function fetchMovies() {
             throw new Error('Error occired while fetching data');
         }
         const data = await response.json();
-        return data.results;
+        let sliceData = data.results;
+        sliceData = sliceData.slice(0,10);
+        console.log(sliceData)
+        return sliceData
     } catch (error) {
         alert('Error fetching data:', error);
         throw error;

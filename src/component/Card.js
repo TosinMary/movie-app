@@ -16,7 +16,7 @@ function Card(movie) {
     return (
         <>
             <div data-testId='movie-card'  className='shadow-2xl flex flex-col my-2 hover:scale-100 duration-300 bg-white  py-[3rem] px-4 card-item'>
-                <Link to={`/Details/${movie.info.id}`}>
+                <Link to={`/Movie/${movie.info.id}`}>
                     <div className='p-4'>
                         <img
                             src={img_path + movie.info.poster_path}

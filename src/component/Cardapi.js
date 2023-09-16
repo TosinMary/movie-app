@@ -3,13 +3,13 @@ import Card from './Card';
 import fetchMovies from '../fetchMovies';
 
 function Cardapi() {
-    const [movieData, setMovieData] = useState([]);
+    const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await fetchMovies();
-                setMovieData(data);
+                setMovies(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -20,10 +20,10 @@ function Cardapi() {
 
     return (
         <div className='container'>
-            {movieData.length === 0 ? (
+            {movies.length === 0 ? (
                 <p className='Not found'>Not Found</p>
             ) : (
-                movieData.map((res, pos) => {
+                movies.map((res, pos) => {
                     return <Card info={res} key={pos} />;
                 })
             )}

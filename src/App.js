@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 import Home from './component/Home';
 import Nav from './component/Nav';
 import Cardapi from './component/Cardapi';
-import Details from './component/Details';
+import Movie from './component/Movie';
 
 function App() {
     return (
@@ -14,7 +14,7 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='Nav' element={<Nav />} />
                     <Route path='Cardapi' element={<Cardapi />} />
-                    <Route path='/Details/:id' element={<Details />} />
+                    <Route path='/Movie/:id' element={<Movie />} />
                 </Routes>
             </Router>
         </div>

@@ -27,7 +27,7 @@ function Card(movies) {
                     </div>
 
                     <div className='p-4'>
-                        <h1 className='text-gray-400' data-testid='movie-release-date'>
+                        <h1 className='text-gray-400' data-testId='movie-release-date'>
                             Release date: {movies.info.release_date}
                         </h1>
                         <h2 className='font-bold text-[1rem] py-2' data-testId='movie-title'>

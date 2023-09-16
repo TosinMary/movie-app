@@ -1,15 +1,23 @@
+import React from 'react';
 import {useEffect, useState} from 'react';
 import Card from './Card';
 import fetchMovies from '../fetchMovies';
+import { FadeLoader } from "react-spinners";
+
 
 function Cardapi() {
     const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await fetchMovies();
                 setMovies(data);
+                setLoading(true);
+                setTimeout(() => {
+                    setLoading(false);
+                  }, 1000)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -20,9 +28,9 @@ function Cardapi() {
 
     return (
         <div className='container'>
-            {movies.length === 0 ? (
-                <p className='Not found'>Not Found</p>
-            ) : (
+            {loading ? (
+        <FadeLoader color={"#D0021B"} loading={loading} size={150} />
+      ) : (
                 movies.map((res, pos) => {
                     return <Card info={res} key={pos} />;
                 })

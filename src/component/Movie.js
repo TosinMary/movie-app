@@ -20,7 +20,7 @@ function Details() {
     if (!selectedMovie) {
         return <p>Loading...</p>;
     }
-    console.log(selectedMovie, 'selectedMovie');
+    alert(selectedMovie, 'selectedMovie');
 
     return (
         <div>

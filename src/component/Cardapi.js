@@ -19,7 +19,7 @@ function Cardapi() {
                     setLoading(false);
                   }, 1000)
             } catch (error) {
-                console.error('Error fetching data:', error);
+                alert('Error fetching data:', error);
             }
         };
 

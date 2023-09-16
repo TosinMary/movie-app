@@ -20,7 +20,7 @@ function Card(movies) {
                     <div className='p-4'>
                         <img
                             src={img_path + movies.info.poster_path}
-                            alt=''
+                            alt='movie'
                             className='h-[400px] w-[400px]  '
                             data-testId='movie-poster'
                         ></img>
@@ -33,16 +33,6 @@ function Card(movies) {
                         <h2 className='font-bold text-[1rem] py-2' data-testId='movie-title'>
                             {movies.info.title}
                         </h2>
-
-                        <div className='flex py-2'>
-                            <p className='mr-12 text-yellow-700'>
-                                Vote average: {movies.info.vote_average}
-                            </p>
-                            <p>Popularity: {movies.info.popularity}% </p>
-                        </div>
-                        <p className='text-gray-400 py-3 leading-8 overview'>
-                            Overview: {truncateText(movies.info.overview, 30)}
-                        </p>
                     </div>
                 </Link>
             </div>
